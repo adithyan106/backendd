@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins="*")
@@ -20,8 +21,8 @@ public class UserController {
         return "Hello World";
     }
     @GetMapping("/users")
-    String getUsers(){
-        return "Hello users ";
+    public List<Users> getUsers(){
+        return this.ur.findAll();
     }
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody Users user) {
